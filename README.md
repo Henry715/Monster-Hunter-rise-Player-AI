@@ -9,7 +9,7 @@ Well, now the server only sends a message "response" to the client and the clien
 # Game stats to send for now
 now the server sends no useful information, but there are some that is already on my mind, for example, the position, HP of the player and monster, damages received, damages caused by the player and the monster, quest stats(# of carts, fail or success?), quest time, maybe even buff stats.
 # File location
-After you installed reframework plugin (run the game once and you'll have these folders),
+After you installed reframework plugin (run the game once and you'll have the auto run folder),
 
 put the server.lua into autorun folder:![1681821866882](https://user-images.githubusercontent.com/66408806/232782011-d4037919-3eb0-4b0e-ad47-847b63baefe0.png)
 And then put the socket folder into the game's root folder:![1681821883470](https://user-images.githubusercontent.com/66408806/232782156-2af22a25-0c5c-4ac6-9240-41b62e2c208a.png)
