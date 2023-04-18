@@ -6,6 +6,8 @@ The dll for the socket module is compiled with lua 5.4.4(as far as I know, it is
 For running the python client, I would recommend you to install anaconda to manage the virtual environment and packages. The python version I'm using is 3.9.16, so I would recommand you to install the same version as well. After the python setup, download the spyder editor from anaconda to load the clint.py file. press the green triangular button under the debug tab to run python script.
 # Developing state
 Well now the server only sends a message "response" to the client and the client will print it out on the console, it's just a starting point rightnow, and hopefully I can work on this project till it's finished. And like I said, I'm not an expert in deep reinforcement learning, and this is the first time me creating a MHR game mod. But I know if a person needs to train an AI for a game, the game information and the game stats is crucial, which is what I am doing now, to make the game info and game stats available. So I need experts or maybe just enthusiasts to tell me if the game info is enough for training AI, thanks a lot in advance. If you are also interested, please don't hesitate to join(I am not familiar with any of the github settings, if you need some changes, say role allocation or whatever, please let me know and give me some details of how to achieve that, thank you.)
+# Game stats to send for now
+now the server sends no useful information, but there are some that is already on my mind, for example, the position, HP of the player and monster, damages received, damages caused by the player and the monster, quest stats(# of carts, fail or success?), quest time, maybe even buff stats.
 # File location
 After you installed reframework plugin,
 
