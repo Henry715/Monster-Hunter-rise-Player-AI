@@ -2,7 +2,7 @@
 -- package.cpath = package.cpath .. ";C:\\Users\\10381830\\Downloads\\Newfolder\\socket\\core.dll"
 -- local socket = require("socket")
 package.path="D:\\SteamLibrary\\steamapps\\common\\MonsterHunterRise\\reframework\\autorun\\socket"
-local socket=dofile("D:\\SteamLibrary\\steamapps\\common\\MonsterHunterRise\\reframework\\autorun\\socket\\socket.lua")
+local socket=dofile("D:\\SteamLibrary\\steamapps\\common\\MonsterHunterRise\\socket\\socket.lua")
 local server = assert(socket.bind("*", 8080))
 local client = server:accept()
 client:settimeout(10)
