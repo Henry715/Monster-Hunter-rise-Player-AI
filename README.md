@@ -11,7 +11,7 @@ now the server sends no useful information, but there are some that is already o
 # File location
 After you installed reframework plugin (run the game once and you'll have the auto run folder),
 
-put the server.lua into autorun folder and change the file path to something similar in the file,but I guess most likely the only thing you need to change is the dirver name, I put the steam library inside my D drive, and make sure that the path doesn't have any special characters, which might cause issue:![1681821866882](https://user-images.githubusercontent.com/66408806/232782011-d4037919-3eb0-4b0e-ad47-847b63baefe0.png)
+put the server.lua into autorun folder and change the file path to something similar in the file,but I guess most likely the only thing you need to change is the drver name in the path, I put the steam library inside my D drive. And make sure that the path doesn't have any special characters, which might cause issue:![1681821866882](https://user-images.githubusercontent.com/66408806/232782011-d4037919-3eb0-4b0e-ad47-847b63baefe0.png)
 And then put the socket folder into the game's root folder:![1681821883470](https://user-images.githubusercontent.com/66408806/232782156-2af22a25-0c5c-4ac6-9240-41b62e2c208a.png)
 
 In terms of Python client, you can put it anywhere you'd like, as long as you can run the client, that would be fine.
