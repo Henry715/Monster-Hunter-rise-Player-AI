@@ -1,26 +1,108 @@
--- local socket = package.loadlib([[C:\Users\10381830\Downloads\Newfolder\socket\core.dll]], 'luaopen_core')
--- package.cpath = package.cpath .. ";C:\\Users\\10381830\\Downloads\\Newfolder\\socket\\core.dll"
--- local socket = require("socket")
-package.path="D:\\SteamLibrary\\steamapps\\common\\MonsterHunterRise\\reframework\\autorun\\socket"
+local quest_status = require("MHR_Overlay.Game_Handler.quest_status");
+
+-- local singletons = require("MHR_Overlay.Game_Handler.singletons");
+-- local damage_hook = require("MHR_Overlay.Damage_Meter.damage_hook");
+-- local player = require("MHR_Overlay.Damage_Meter.players");
+-- local large_monster = require("MHR_Overlay.Monsters.large_monster");
+-- local timer = require("MHR_Overlay.Game_Handler.time");
+local json=json;
+local re=re;
+local string=string;
+local tostring=tostring;
+local sdk=sdk;
+-- singletons.init_module();
+quest_status.init_module();
+-- damage_hook.init_module();
+-- player.init_module();
+-- large_monster.init_module();
+-- timer.init_module();
+package.path="D:\\SteamLibrary\\steamapps\\common\\MonsterHunterRise\\reframework"
 local socket=dofile("D:\\SteamLibrary\\steamapps\\common\\MonsterHunterRise\\socket\\socket.lua")
+local quest_stat=dofile("D:\\SteamLibrary\\steamapps\\common\\MonsterHunterRise\\reframework\\autorun\\stats\\questInfo.lua")
 local server = assert(socket.bind("*", 8080))
+
 local client = server:accept()
 client:settimeout(10)
 print(server:getsockname())
 print(client:getpeername())
-log_to_file("Server started successfully..")
+-- log_to_file("Server started successfully..")
 
-local function log_to_file( message)
-    local file = io.open("log", "a")
-    file:write(message .. "\n")
-    file:close()
-end
+local get_UpTimeSecond = sdk.find_type_definition("via.Application"):get_method("get_UpTimeSecond")
+local interval = 1 -- In seconds
+local lastTime = 0.0
 
 re.on_frame(function()
-	local message = "response\n"
-	print("Sending" )
-	local succ, err = client:send(message)
-end)
+	-- singletons.init();
+	-- player.update_myself_position();
+	quest_status.update_is_online();
+	-- timer.tick();
+	if quest_status.flow_state >= quest_status.flow_states.PLAYING_QUEST and quest_status.flow_state <= quest_status.flow_states.WYVERN_RIDING_START_ANIMATION then
+		-- draw_modules(config.current_config.global_settings.module_visibility.playing_quest, "Playing Quest");
+		local newTime = get_UpTimeSecond:call(nil)
+		if (newTime - lastTime) > interval then
+			lastTime = newTime
+			-- print("someting\n")
+			local info=quest_stat.init_questinfo()
+			local quest_result=quest_stat.get_quest_info(info)
+			local message = "response\n"
+			print(json.dump_string(quest_result).."\n")
+			local succ, err = client:send(json.dump_string(quest_result))
+			--print("Sending" )
+			-- for i = 0, enemy_count - 1 do
+			-- local enemy_manager_type_def = sdk.find_type_definition("snow.enemy.EnemyManager");
+			-- local get_boss_enemy_count_method = enemy_manager_type_def:get_method("getBossEnemyCount");
+			-- local get_boss_enemy_method = enemy_manager_type_def:get_method("getBossEnemy");
+			-- local enemy_count = get_boss_enemy_count_method:call(singletons.enemy_manager);
+			-- print(type(enemy_count))
+			-- local enemy = get_boss_enemy_method:call(singletons.enemy_manager, enemy_count-1);
+			-- if enemy == nil then
+				-- print("no enemy")
+					-- -- customization_menu.status = "No enemy";
+					-- -- goto continue
+			-- else
+				-- print("yes enemy")
+				-- local target_monster= json.dump_string(large_monster.list[enemy])
+				-- local enemy_position=large_monster.list[enemy].position
+				
+				-- local succ, err = client:send(target_monster)
+				-- print(target_monster)-- next(large_monster.list[enemy]) 
+				-- print(enemy_position.x,enemy_position.y,enemy_position.z)
+		end
+			
+			
+			
+			-- print(ta)
+			-- local player_info=json.dump_string(player)
+			-- print(player.myself_position.x,player.myself_position.y,player.myself_position.z)
+			-- local player_info_length=string.len(player_info)
+			-- local succ, err = client:send(tostring(player_info_length)..'\n'..player_info)
+			--local succ, err = client:send(json.dump_string(player))
+
+		-- end
+	end
+end);
+
+-- re.on_frame(function()
+	-- local message = "response\n"
+	-- --print("Sending" )
+	-- singletons.init();
+	-- player.update_myself_position();
+	-- quest_status.update_is_online();
+	-- timer.tick();
+	-- -- print(player)
+	-- -- print(player.list)
+	-- -- print(json.dump_string(player))
+	-- -- print(json.dump_string(player.list))
+	-- -- print(json.dump_string(damage_hook))
+	-- -- print(json.dump_string(timer))
+	-- -- print(json.dump_string(player.myself_position))
+	-- -- print(timer.dump_string)
+	-- local player_info=json.dump_string(player)
+	-- local player_info_length=string.len(player_info)
+	-- -- local succ, err = client:send(tostring(player_info_length)..'\n'..player_info)
+	-- local succ, err = client:send(json.dump_string(player))
+	-- socket.sleep(0.0001)
+-- end)
 
 -- while true do
 
