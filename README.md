@@ -10,7 +10,10 @@ Well, now the server only sends a message "response" to the client and the clien
 ## 4/22
 I have managed to reterive the quest info from the game, for example, the targeted monster to hunt, how many carts left, how many lives was given by the quest. In terms of retreving damage, I would consider to reuse the code from MHR-Overlay(https://github.com/GreenComfyTea/MHR-Overlay), I tried to retreve on my own, but it is so complicated and too much work for myself, I'm reusing the code for now(but I'm still considering rewrite the code to format it to the format I'd like). But I haven't commit it yet, I'll commit it until I managed to reorder the info and integrated into the server. In the file, I'm using absolute path for now, it will be changed.
 # Game stats to send for now
+##4/18
 now the server sends no useful information, but there are some that is already on my mind, for example, the position, HP of the player and monster, damages received, damages caused by the player and the monster, quest stats(# of carts, fail or success?), quest time, maybe even buff stats. For the next update, I will try to fetch all relevent player and monster info and send it to the client.
+##4/22
+now the Server sends the quest info to the client only after the hunt starts.
 # File location
 After you installed reframework plugin (run the game once and you'll have the auto run folder),
 
