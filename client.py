@@ -62,8 +62,10 @@ if __name__=="__main__":
         
         # Print the message
         # print(message_json['total']['display']['total_damage'])
-        
-        print(message_json)        # break
+        quest_json=message_json["quest"]
+        monster_stats_json=message_json["monster_stats"]
+        print(quest_json)   
+        print(monster_stats_json)# break
     #     # succ=s.sendall(b'Thank you for connecting')
         
     
