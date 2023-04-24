@@ -92,6 +92,7 @@ re.on_frame(function()
 				target_monster.static_UI=nil
 				target_monster.highlighted_UI=nil
 				target_monster.dynamic_UI=nil
+				target_monster.act_position={x=target_monster.position.x,y=target_monster.position.y,z=target_monster.position.z}
 				print(json.dump_string(target_monster))
 				-- local enemy_position=large_monster.list[enemy].position
 				table.insert(world_info.monster_stats,i+1,target_monster)
