@@ -1,31 +1,7 @@
 import socket
 import json
-import threading
-def recvall(sock, n):
-    data = b''
-    while len(data) < n:
-        packet = sock.recv(n - len(data))
-        if not packet:
-            return None
-        data += packet
-    return data
 
-def receive_data(client):
-    while True:
-        length = 1024
-        jsonString = recvall(client, length).decode()
-        data = json.loads(jsonString)
-        print(data)
-        # process the received data
-def receive_all(sock):
-    data = b''
-    while True:
-        chunk = sock.recv(4096)
-        if not chunk:
-            break
-        data += chunk
-    print(data)
-    return data
+
 if __name__=="__main__":
     # create a socket object
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -63,9 +39,13 @@ if __name__=="__main__":
         # Print the message
         # print(message_json['total']['display']['total_damage'])
         quest_json=message_json["quest"]
-        monster_stats_json=message_json["monster_stats"]
+        monster_stats_json=message_json["monster_stats"][0]["act_position"]
+        player_pos_json=message_json["player_stats"]["act_position"]
+        player_stats_json=message_json["player_stats"]["player"]
         print(quest_json)   
         print(monster_stats_json)# break
+        print(player_stats_json)
+        print(player_pos_json)
     #     # succ=s.sendall(b'Thank you for connecting')
         
     
