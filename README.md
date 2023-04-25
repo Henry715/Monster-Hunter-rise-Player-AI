@@ -14,11 +14,11 @@ reading the codes of MHR-Overlay, I can say that I managed to understand most of
 ## 4/24
 I'm using the latest version of MHR-Overlay, and if you install MHR-Overlay correctly, then the rest of the steps are just the same. By the way, because I didn't write my own monster_stat module, there is some conflicts with the MHR-Overlay. For example, because I deleted the UI part from a global variable, when using the server, MHR Overlay will miss some of the components, that's the drawback for now. There is also one very strange behaviour of the server, it seems if one accept the quest really quick and starts the game right after acceptinig the quest(which there isn't a lot time gap between two moves), the call method in quest_info breaks.
 ## 4/25
-now player positon is in player stats, you can see that how I extract the position in the client side. And in client side, I only extrated the position of the first monster. this is how the whole message structure look like:
+now player positon is in player stats, you can see that how I extract the position in the client side. And in client side, I only extrated the position of the first monster. This is how the whole message structure look like:
 ![F4U$T{O09A{N_GT~3_6_P}V](https://user-images.githubusercontent.com/66408806/234291238-a090806c-b80d-4a67-97e1-8cbd144b9ba5.png)
 and this is how the player_stats looks like:
 ![GVX U0$AIZK5OPI18}OU}(H](https://user-images.githubusercontent.com/66408806/234291572-d47187eb-1b3f-4fd1-9647-1f6e417ab1c3.png)
-
+To control the player, you can use a package called "pydirectinput"(https://github.com/learncodebygaming/pydirectinput) together with the package called "pyautogui", pydirectinput substitutes some of the functions in pyautogui that doesn't work in a modern game(like pyautogui.keyDown()). I have tested it with some of the keys in MHR, well, at least "wasd" keys works. So theoratically, I think now we are able to train the hunter to walk to one of the target monster with these necessary infos to begin with. 
 
 # Game stats to send for now
 ## 4/18
