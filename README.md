@@ -39,5 +39,5 @@ And then put the socket folder into the game's root folder:![1681821883470](http
 In terms of Python client, you can put it anywhere you'd like, as long as you can run the client, that would be fine.
 And start the game again, after a while you might see the game freezes, don't worry, because that is the server waiting for a connection from the client. After you start the client, the game will run the same as expected.
 # About me
-I'm just a computer science student that just graduated from university and loves Monster Hunter series. By the way, I'm Chinese, in case if you'd like to communicate in Chinese.
+I'm just a computer science student that just graduated from university and loves Monster Hunter series.
 
