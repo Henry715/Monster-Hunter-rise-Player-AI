@@ -13,6 +13,13 @@ I have managed to retrieve the quest info from the game,In terms of retrieving d
 reading the codes of MHR-Overlay, I can say that I managed to understand most of the code for retrieving the monster info in game, but there are too much for myself to complete, I guess it would be over several months to reorder the code by myself... So I'm definitely sticking with MHR-Overlay for the time being. Ideally, I want it to be in three modules, one for player, one for monster, and another one for the quest.
 ## 4/24
 I'm using the latest version of MHR-Overlay, and if you install MHR-Overlay correctly, then the rest of the steps are just the same. By the way, because I didn't write my own monster_stat module, there is some conflicts with the MHR-Overlay. For example, because I deleted the UI part from a global variable, when using the server, MHR Overlay will miss some of the components, that's the drawback for now. There is also one very strange behaviour of the server, it seems if one accept the quest really quick and starts the game right after acceptinig the quest(which there isn't a lot time gap between two moves), the call method in quest_info breaks.
+## 4/25
+now player positon is in player stats, you can see that how I extract the position in the client side. And in client side, I only extrated the position of the first monster. this is how the whole message structure look like:
+![F4U$T{O09A{N_GT~3_6_P}V](https://user-images.githubusercontent.com/66408806/234291238-a090806c-b80d-4a67-97e1-8cbd144b9ba5.png)
+and this is how the player_stats looks like:
+![GVX U0$AIZK5OPI18}OU}(H](https://user-images.githubusercontent.com/66408806/234291572-d47187eb-1b3f-4fd1-9647-1f6e417ab1c3.png)
+
+
 # Game stats to send for now
 ## 4/18
 now the server sends no useful information, but there are some that is already on my mind, for example, the position, HP of the player and monster, damages received, damages caused by the player and the monster, quest stats(# of carts, fail or success?), quest time, maybe even buff stats. For the next update, I will try to fetch all relevent player and monster info and send it to the client.
